@@ -49,6 +49,7 @@
     const canvas = document.querySelector("#unity-canvas");
     const fullscreenBtn = document.getElementById("fullscreen-btn");
 
+    // Mostrar botón de fullscreen en móviles
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
       window.addEventListener("touchstart", () => {
         fullscreenBtn.style.display = "block";
@@ -64,6 +65,7 @@
       });
     }
 
+    // Crear instancia de Unity y manejar errores
     createUnityInstance(canvas, {
       dataUrl: "Build/MorseMUT.data",
       frameworkUrl: "Build/MorseMUT.framework.js",
@@ -72,6 +74,10 @@
       companyName: "GamesLithium",
       productName: "TeleMut",
       productVersion: "1.0"
+    }).then((unityInstance) => {
+      console.log("Unity cargado correctamente");
+    }).catch((error) => {
+      console.error("Error al cargar Unity:", error);
     });
   </script>
 </body>
